@@ -1,0 +1,1405 @@
+{
+  "info": {
+    "_postman_id": "0bc179e8-1e13-4559-8017-46041da40c0e",
+    "name": "Naturescape Lawn Care - API Test Suite",
+    "description": "StartFragment\n\n**Project:** Naturescape Lawn Care – API Test Suite\n\nThis collection contains manual API tests created for the Naturescape Lawn Care web application.  \nThe tests validate backend endpoints related to services, estimate requests, customer contact forms, and location data.\n\n**Testing Scope**\n\n- Validate API response status codes\n    \n- Verify JSON response structure\n    \n- Test request validation and error handling\n    \n- Perform positive and negative API testing\n    \n\n**Tools Used**\n\n- Postman (Manual API Testing)\n    \n- JSON validation\n    \n- Response time verification\n    \n\n**Test Types**\n\n- GET requests validation\n    \n- POST request validation\n    \n- Negative testing\n    \n- Response validation\n    \n\nEndFragment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "35025615"
+  },
+  "item": [
+    {
+      "name": "01_Services",
+      "item": [
+        {
+          "name": "GET_All_Services",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type header is present\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Lawn_Care_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Lawn Care Services text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Lawn Care Services\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type header is present\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains 5 Visit Lawn Program\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"5-Visit Lawn Program\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains 6 Visit Lawn Program\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"6-Visit Lawn Program\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/lawncare/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "lawncare",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_5_Application_Lawn_Program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function (){\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function (){\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000)\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains 5 Application Lawn Program text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"5 Application Lawn Program\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/lawncare/5app/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "lawncare",
+                "5app",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_6_Application_Lawn_Program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains 6 Visit Lawn Care Program text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"6 Visit Lawn Care Program\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/lawncare/6app/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "lawncare",
+                "6app",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Tree_And_Shrubs_Program",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Tree and Shrub Program text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Tree and Shrub Program\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/treeandshrub/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "treeandshrub",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Snow_Removal_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Snow Removal You Can Count On text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Snow Removal You Can Count On\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/snowremoval/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "snowremoval",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Mosquito_Control_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Mosquito Control text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Mosquito Control\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/mosquitocontrol/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "mosquitocontrol",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Lime_Application_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Lime Application text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Lime Application\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/lime/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "lime",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Lawn_Mowing_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Mowing text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Mowing\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/mowing/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "mowing",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get_Aeration_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Lawn Aeration & Overseeding: An Essential Practice For Maintaining A Healthy Lawn text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Lawn Aeration & Overseeding: An Essential Practice For Maintaining A Healthy Lawn\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/aeration/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "aeration",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Preventative_Grub_Control_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Preventative Grub Control text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Preventative Grub Control\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/grubcontrol/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "grubcontrol",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Fall_Cleanup_Service",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Fall Clean-Up text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Fall Clean-Up\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/fallcleanup/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "fallcleanup",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02_Estimate_Request",
+      "item": [
+        {
+          "name": "GET_Get_Started_Page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Get Started! text\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Get Started!\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.expect(pm.response.headers.get(\"Content-Type\").toLowerCase()).to.include(\"text/html\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/get_started/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "get_started",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Branch_Info_By_Zip",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "pm.test(\"Valid zip 60436 returns Naturescape page\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Naturescape\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/getBranchInfo.php?zip=60436",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "getBranchInfo.php"
+              ],
+              "query": [
+                {
+                  "key": "zip",
+                  "value": "60436"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Branch_Info_Invalid_Zip",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Invalid zip 99999 does not crash the server\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Naturescape\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/getBranchInfo.php?zip=99999",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "getBranchInfo.php"
+              ],
+              "query": [
+                {
+                  "key": "zip",
+                  "value": "99999",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Branch_Info_Missing_Zip",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Missing zip parameter does not crash the server\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Naturescape\");\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/getBranchInfo.php?",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "getBranchInfo.php"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Branch_Info_Invalid_Format",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Invalid zip parameter does not crash the server\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Naturescape\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/get_started/?zip=ABDE",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "get_started",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "zip",
+                  "value": "ABDE",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03_Contact_Form",
+      "item": [
+        {
+          "name": "GET_Contact_Us_Page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is HTML\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Contact Us heading\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Contact Us\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Branch List section\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Branch List\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Career Opportunities section\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Career Opportunities\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/contactus/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "contactus",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Contact_Branch_Info_By_Zip",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Valid zip 60436 returns Naturescape page\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Naturescape\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/getBranchInfo.php?&zip=60436",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "getBranchInfo.php"
+              ],
+              "query": [
+                {
+                  "key": null,
+                  "value": null
+                },
+                {
+                  "key": "zip",
+                  "value": "60436"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04_Locations",
+      "item": [
+        {
+          "name": "GET_All_Locations_Page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Locations heading\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Naturescape\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains 40 locations reference\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"40 local branch\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Joliet Branch\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Joliet\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/locations/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locations",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Single_Location_Page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Joliet branch page contains address\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"550 Vera Ct\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Joliet branch page contains phone number\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"815\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/locations/il-joliet/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locations",
+                "il-joliet",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05_Authentication",
+      "item": [
+        {
+          "name": "GET_MyAccount_Page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is present\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains My Account heading\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"My Account\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains login form\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Log In to View Account Information\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Make a Payment button\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Make a Payment\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Add New Service button\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Add New Service\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page contains Make Self Storage Payment button \", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Make Self Storage Payment\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/account/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "account",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_MyAccount_Page_Without_Auth",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Unauthenticated user sees login form not account data\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Log In to View Account Information\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Page does not expose private account data\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Account Balance\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/account/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "account",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "06_Negative_Tests",
+      "item": [
+        {
+          "name": "GET_Invalid_Page_404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Invalid page returns 404\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusNotFound\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Server handles invalid page gracefully\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/this-page-does-not-exist/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "this-page-does-not-exist",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Invalid_Service_404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200 - server redirects invalid pages\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Invalid page does not expose server errors\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Fatal error\");\r",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Stack trace\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{servicesPath}}/invalid-service/",
+              "host": [
+                "{{base_url}}{{servicesPath}}"
+              ],
+              "path": [
+                "invalid-service",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET_Misspelled_Path",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200 - server redirects misspelled paths\", function () {\r",
+                  "    pm.response.to.have.status(\r",
+                  "        parseInt(pm.environment.get(\"expectedStatusOK\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 3 seconds\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(\r",
+                  "        parseInt(pm.environment.get(\"responseTimeLimit\"))\r",
+                  "    );\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Misspelled path does not expose server errors\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Fatal error\");\r",
+                  "    pm.expect(pm.response.text()).to.not.include(\"Stack trace\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/us/servvices/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "us",
+                "servvices",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
